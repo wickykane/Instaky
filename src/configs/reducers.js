@@ -1,6 +1,5 @@
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { combineReducers } from 'redux';
-import testReducer from '../containers/TestLayout/reducer';
 
 const initRouteState = {
     location: null
