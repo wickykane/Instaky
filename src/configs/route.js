@@ -2,13 +2,14 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import App from '../containers/MainLayout/loadable';
 import TEST from '../containers/TestLayout/loadable';
-
+import NotFound from '../containers/NotFound/loadable';
 
 const RouteConfig = () => {
     return (
         <Switch>
             <Route exact path="/" component={App} />
             <Route exact path="/test" component={TEST} />
+            <Route path='*' exact component={NotFound} />
         </Switch>
     )
 }

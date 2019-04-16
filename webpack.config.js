@@ -14,7 +14,7 @@ module.exports = {
     output: {
         path: path.resolve("dist"),
         filename: "react-component.js",
-        publicPath: '/dist'
+        // publicPath: '/dist'
     },
     module: {
         rules: [{
