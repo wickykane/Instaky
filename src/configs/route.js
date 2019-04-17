@@ -6,7 +6,7 @@ import NotFound from '../containers/NotFound/loadable';
 const RouteConfig = () => {
     return (
         <Switch>
-            <Route exact path="/" component={App} />
+            <Route path="/" component={App} />
             <Route path='*' exact component={NotFound} />
         </Switch>
     )

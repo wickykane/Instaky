@@ -7,4 +7,11 @@ const IconLink = (props) => {
     );
 }
 
-export default IconLink;
+const Icon = (props) => {
+    const { icon }  = props;
+    return (
+        <i className={icon}></i>
+    );
+}
+
+export { IconLink, Icon };

@@ -6,21 +6,24 @@ import Footer from '../../components/Footer';
 import Wrapper from '../../components/Wrapper';
 
 // Container
-import TestComponent from '../../containers/TestLayout'
+import TestComponent from '../../containers/TestLayout';
+
 // Global css
 import '../../styles.scss';
 
 const App = () => {
-    return (
-        <Wrapper>
-            <Header></Header>
-            <Wrapper>
-            <Switch>
-                <Route exact path="/test" component={TestComponent} />
-            </Switch>
-            </Wrapper>
-            <Footer></Footer>
-        </Wrapper>
-    )
+  return (
+    <Wrapper>
+      <Header/>
+      <Wrapper className='container'>
+        <Switch>
+            <Route path='/' component={TestComponent} />
+            <Route path='/test'  component={TestComponent} />
+        </Switch>
+      </Wrapper>
+      <Footer />
+    </Wrapper>
+  );
 };
+
 export default App;
