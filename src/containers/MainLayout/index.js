@@ -7,18 +7,20 @@ import Wrapper from '../../components/Wrapper';
 
 // Container
 import TestComponent from '../../containers/TestLayout';
+import Home from '../Home';
 
 // Global css
 import '../../styles.scss';
+
 
 const App = () => {
   return (
     <Wrapper>
       <Header/>
-      <Wrapper className='container'>
+      <Wrapper>
         <Switch>
-            <Route path='/' component={TestComponent} />
-            <Route path='/test'  component={TestComponent} />
+            <Route exact path='/' component={Home} />
+            <Route exact path='/test' component={TestComponent} />
         </Switch>
       </Wrapper>
       <Footer />
