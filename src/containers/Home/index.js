@@ -1,22 +1,35 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+
 import Wrapper from '../../components/Wrapper';
-import Card from '../../components/Card';
-import ScrollWrapper from '../../components/ScrollWrapper';
+import UserInfo from '../../components/UserInfo';
+import { default as CardPost } from '../../components/Card';
+
+const Card = styled(CardPost)`
+  margin-bottom: 1.5rem;
+`;
 
 const ParentWrapper = styled(Wrapper)`
   background-color: #fafafa;
   padding: 2rem 0;
   .right-column {
-    position: absolute;
-    height: 100vh;
     width: 100%;
+    position: relative;
     max-width: 293px;
-  }
-  .fix-column {
-    position: fixed;
-    top: 0;
-    width: 100%;
+    .content {
+      position: absolute;
+      height: 100vh;
+      width: 100%;
+      max-width: 293px;
+      top: 0;
+      transition: all 0.2s linear;
+    }
+
+    .fix-column {
+      position: fixed;
+      top: 4rem;
+      width: 100%;
+    }
   }
 `;
 
@@ -36,20 +49,21 @@ export class Home extends Component {
     return (
       <ParentWrapper>
         <Wrapper className="container">
-          <Wrapper className="row">
-            <Wrapper className="col-md-7">
+          <Wrapper className="row justify-content-center">
+            <Wrapper className="left-column col-md-7">
+              <Card />
+              <Card />
               <Card />
             </Wrapper>
-            <Wrapper className="col-md-5">
-              <ScrollWrapper scroll={e => this.setFix(e)}>
+            <Wrapper className="right-column d-sm-none d-md-block">
+              {/* <ScrollWrapper scroll={e => this.setFix(e)}> */}
                 <Wrapper
-                  className={`right-column ${
-                    this.state.isFix ? 'fix-column' : ''
-                  }`}
+                  className={`content ${this.props.fixMenu ? 'fix-column' : ''}`}
                 >
+                  <UserInfo className="large p-3" description="10 hours ago" />
                   <Card />
                 </Wrapper>
-              </ScrollWrapper>
+              {/* </ScrollWrapper> */}
             </Wrapper>
           </Wrapper>
         </Wrapper>

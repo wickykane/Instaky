@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Header from '../../components/Header';
@@ -12,15 +12,20 @@ import Home from '../Home';
 // Global css
 import '../../styles.scss';
 
-
 const App = () => {
+  const [data, setData] = useState({});
+
+  const handleData = (e) => {
+    setData({ fixMenu: e});
+  }
+
   return (
     <Wrapper>
-      <Header/>
+      <Header callback={handleData} />
       <Wrapper>
         <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/test' component={TestComponent} />
+          <Route exact path="/" component={() => <Home {...data} />} />
+          <Route exact path="/test" component={TestComponent} />
         </Switch>
       </Wrapper>
       <Footer />
