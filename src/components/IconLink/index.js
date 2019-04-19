@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const IconLink = styled((props) => {
-    const { link, icon, className }  = props;
+    const { link='#', icon, className }  = props;
     return (
         <Link to={link}><i className={className + ' ' + icon}></i></Link>
     );
