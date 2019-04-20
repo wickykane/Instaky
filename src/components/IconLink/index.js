@@ -1,16 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-const IconLink = (props) => {
-    const { link, icon }  = props;
+const IconLink = styled((props) => {
+    const { link='#', icon, className }  = props;
     return (
-        <a href={link}><i className={icon}></i></a>
+        <Link to={link}><i className={className + ' ' + icon}></i></Link>
     );
-}
+})`
+    margin: 0 1rem;
+    font-size: 20px;
+    color: #555;
+    &:hover {
+        color: #000;
+        font-weight: 500;
+    }
+`;
 
 const Icon = (props) => {
-    const { icon }  = props;
+    const { icon, ...rest }  = props;
     return (
-        <i className={icon}></i>
+        <i {...rest} className={icon}></i>
     );
 }
 
