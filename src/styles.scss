@@ -1,7 +1,8 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "./assets/fonts/line-icons/style.css";
 @import "./assets/css/reset.css";
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 
 html, body {
-    font-family: "Segoe UI";
+    font-family: "Segoe UI", 'Roboto', sans-serif;;
 }

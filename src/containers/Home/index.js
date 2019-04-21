@@ -5,6 +5,15 @@ import Wrapper from '../../components/Wrapper';
 import UserInfo from '../../components/UserInfo';
 import { default as CardPost } from '../../components/Card';
 
+import { injectReducer } from '../../utils/injectReducer';
+import reducer from './reducer';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+
+
+/**
+ * CSS Area
+ */
 const Card = styled(CardPost)`
   margin-bottom: 1.5rem;
 `;
@@ -33,11 +42,15 @@ const ParentWrapper = styled(Wrapper)`
   }
 `;
 
+/**
+ * Component
+ */
+
 export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFix: false
+      isFix: false,
     };
   }
 
@@ -56,14 +69,12 @@ export class Home extends Component {
               <Card />
             </Wrapper>
             <Wrapper className="right-column d-sm-none d-md-block">
-              {/* <ScrollWrapper scroll={e => this.setFix(e)}> */}
                 <Wrapper
                   className={`content ${this.props.fixMenu ? 'fix-column' : ''}`}
                 >
                   <UserInfo className="large p-3" description="10 hours ago" />
                   <Card />
                 </Wrapper>
-              {/* </ScrollWrapper> */}
             </Wrapper>
           </Wrapper>
         </Wrapper>
@@ -72,4 +83,17 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+const mapStatetoProps = (state) => {
+  return {
+  } 
+}
+
+export const mapDispatchToProps = (dispatch) => {
+   return {
+   }
+}
+
+const withReducer = injectReducer({ key: 'home', reducer });
+
+export default compose(withReducer, connect(mapStatetoProps, mapDispatchToProps))(Home);
+

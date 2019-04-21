@@ -13,7 +13,7 @@ const IconLink = styled((props) => {
     color: #555;
     &:hover {
         color: #000;
-        font-weight: 500;
+        font-weight: bold;
     }
 `;
 

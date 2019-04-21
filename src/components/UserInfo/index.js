@@ -24,7 +24,7 @@ const UserInfo = styled(props => {
 })`
   a {
     color: #555;
-    font-weight: 500;
+    font-weight: bold;
     font-size: 14px;
   }
   p {
