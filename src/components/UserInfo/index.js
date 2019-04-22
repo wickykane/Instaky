@@ -22,11 +22,7 @@ const UserInfo = styled(props => {
     </Wrapper>
   );
 })`
-  a {
-    color: #555;
-    font-weight: bold;
-    font-size: 14px;
-  }
+
   p {
     font-size: 12px;
     color: #999;

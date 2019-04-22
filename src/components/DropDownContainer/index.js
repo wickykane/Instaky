@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Wrapper from '../Wrapper';
+import UserInfo from '../UserInfo';
 
 const _DropdownContainer = ({ items = [], children, className }) => {
   return (
@@ -9,16 +10,7 @@ const _DropdownContainer = ({ items = [], children, className }) => {
         {items.map((item, index) => (
           <li key={`${JSON.stringify(item)}${index}`}>
             <Wrapper className="d-flex p-3">
-              <img
-                width="30"
-                height="30"
-                className="rounded-circle"
-                src={item.avatar || require('../../assets/images/avatar.png')}
-                alt="avatar"
-              />
-              <Wrapper className="text-left pl-2">
-                {item.des || 'Descripton'}
-              </Wrapper>
+              <UserInfo />
             </Wrapper>
           </li>
         ))}

@@ -22,7 +22,7 @@ const CommentInput = styled(props => {
   return (
     <Wrapper className={`${className} d-flex`}>
       <form>
-        <textarea onKeyPress={handleSumbit} value={input}  onChange={onChangeInput} placeholder="Add Comment" />
+        <textarea onKeyPress={handleSumbit} value={input}  onChange={onChangeInput} placeholder="Add Comment..." />
       </form>
       <button disabled={!input} type="submit">Post</button>
     </Wrapper>

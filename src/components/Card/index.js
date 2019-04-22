@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 import Wrapper from "../Wrapper";
 import UserInfo from "../UserInfo";
 import { IconLink } from "../IconLink";
@@ -7,15 +8,16 @@ import Comment from "../Comment";
 import CommentInput from "../CommentInput";
 import Loadmore from "../LoadMore";
 
+/**
+ * CSS Section
+ */
+
 const ParentWrapper = styled(Wrapper)`
-  a {
-    color: #555;
-    font-weight: bold;
-    font-size: 14px;
-  }
+
   .card-header {
     background-color: #fff;
   }
+  
   .card-body {
     padding: 0;
     &-container {
@@ -56,6 +58,9 @@ const ParentWrapper = styled(Wrapper)`
   }
 `;
 
+/**
+ * Component Section
+ */
 const Card = props => {
   return (
     <ParentWrapper className={props.className}>
@@ -71,7 +76,7 @@ const Card = props => {
                 src="http://nabp.qc.seldatdirect.com/sel2b/assets/img/header/hinh1.jpg"
               />
             </Wrapper>
-            <Wrapper className="action-group p-2">
+            <Wrapper className="action-group p-2 pt-3 pb-3">
               <IconLink icon="lnr lnr-heart" />
               <IconLink icon="lnr lnr-bubble" />
               <IconLink icon="lnr lnr-exit-up" />

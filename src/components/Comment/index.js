@@ -22,12 +22,6 @@ const Comment = styled(props => {
 })`
   font-size: 14px;
 
-  a {
-    color: #555;
-    font-weight: bold;
-    font-size: 14px;
-  }
-
   p {
     font-size: 11px;
     color: #999;

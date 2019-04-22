@@ -39,7 +39,7 @@ const _SearchInput = ({ className }) => {
           name="search"
           type="text"
           ref={e => (searchRef = e)}
-          placeholder="Tìm kiếm"
+          placeholder="Search"
         />
         <Icon icon="lnr lnr-magnifier search-icon" />
         <Icon onClick={clearSearchInput}  icon="lnr lnr-cross-circle close-icon" />
@@ -51,7 +51,7 @@ const _SearchInput = ({ className }) => {
             className="search-container d-flex justify-content-center"
           >
             <Icon icon="lnr lnr-magnifier search-icon-second" />
-            <span>{searchInputValue || 'Tìm kiếm'}</span>
+            <span>{searchInputValue || 'Search'}</span>
           </Wrapper>
         )}
         { isFocusSearch && searchResult.length > 0 && <DropdownContainer maxHeight="300px" items={searchResult}></DropdownContainer> }
