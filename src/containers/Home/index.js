@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import Wrapper from '../../components/Wrapper';
 import UserInfo from '../../components/UserInfo';
 import { default as CardPost } from '../../components/Card';
+import SuggestionCard from '../../components/Suggestion';
 
 import { injectReducer } from '../../utils/injectReducer';
 import reducer from './reducer';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import SuggestionCard from '../../components/Suggestion';
 
 /**
  * CSS Area

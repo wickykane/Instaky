@@ -1,14 +1,15 @@
-import React, { useRef } from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Wrapper from "../../components/Wrapper";
-import AliceCarousel from "react-alice-carousel";
+import Wrapper from '../../components/Wrapper';
+import Slider from '../../components/Slider';
+import { Icon } from '../../components/IconLink';
+import LazyImage from '../../components/Image';
 
-import { injectReducer } from "../../utils/injectReducer";
-import reducer from "./reducer";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import FollowCard from "../../components/FollowCard";
+import { injectReducer } from '../../utils/injectReducer';
+import reducer from './reducer';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 /**
  * CSS Area
@@ -25,76 +26,59 @@ const ParentWrapper = styled(Wrapper)`
   }
 
   .explore-container {
-    padding: 50px 150px;
+    padding: 50px 10%;
   }
 
-  .explore-slider {
-    padding: 2rem;
-    position: relative;
-    .controls-left {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .controls-right {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
+  .large {
+    font-size: 20px;
   }
 `;
 
-const StyledFollowCard = styled(FollowCard)`
-  margin: 0 1rem;
-`;
 /**
  * Component
  */
+const BlockTitle = ({ title, children }) => {
+  return (
+    <Wrapper className="font-weight-bold d-flex justify-content-between mt-3 mb-3">
+      <span className="title-header">{title}</span>
+      {children}
+    </Wrapper>
+  );
+};
+
+const Image = ({ data }) => {
+  return (
+    <Wrapper className="img-container">
+      <LazyImage src="http://nabp.qc.seldatdirect.com/sel2b/assets/img/header/hinh1.jpg" />
+      <Wrapper className="overlay">
+        <Icon icon="lnr lnr-heart" className="large link-white" text="100" />
+        <Icon icon="lnr lnr-bubble" className="large link-white" text="100" />
+      </Wrapper>
+    </Wrapper>
+  );
+};
 
 const Explore = () => {
-  const state = {
-    galleryItems: [1, 2, 3, 4].map(i => <StyledFollowCard key={i} />)
-  };
-
-  const responsive = {
-    0: { items: 1 },
-    1024: { items: 4 }
-  };
-
-  const carouselRef = useRef(null);
   return (
     <ParentWrapper>
       <Wrapper className="explore-container">
-        <Wrapper className="section-header d-flex justify-content-between">
-          <span className="title-header">Explore everyone</span>
-          <button className="btn-link-default link-blue">All</button>
-        </Wrapper>
-        <Wrapper className="explore-slider">
-          <AliceCarousel
-            ref={carouselRef}
-            buttonsDisabled={true}
-            items={state.galleryItems}
-            responsive={responsive}
-            fadeOutAnimation={true}
-            dotsDisabled={true}
-            mouseDragEnabled={true}
-            disableAutoPlayOnAction={true}
-          />
-          <button
-            onClick={() => carouselRef.current._slidePrev()}
-            className="btn-link-default controls-left"
-          >
-            <i className="lnr lnr-chevron-left-circle" />
-          </button>
-          <button
-            onClick={() => carouselRef.current._slideNext()}
-            className="btn-link-default controls-right"
-          >
-            <i className="lnr lnr-chevron-right-circle" />
-          </button>
+        <BlockTitle title="Explore everyone">
+          <button className="btn-link-default link-blue">See All</button>
+        </BlockTitle>
+        <Slider />
+        <BlockTitle title="Explore" />
+        <Wrapper className="explore-images mt-5">
+          <Wrapper className="row">
+            <Wrapper className="col-md-4">
+              <Image />
+            </Wrapper>
+            <Wrapper className="col-md-4">
+              <Image />
+            </Wrapper>
+            <Wrapper className="col-md-4">
+              <Image />
+            </Wrapper>
+          </Wrapper>
         </Wrapper>
       </Wrapper>
     </ParentWrapper>
@@ -109,7 +93,7 @@ export const mapDispatchToProps = () => {
   return {};
 };
 
-const withReducer = injectReducer({ key: "explore", reducer });
+const withReducer = injectReducer({ key: 'explore', reducer });
 
 export default compose(
   withReducer,

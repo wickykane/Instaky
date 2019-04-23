@@ -61,13 +61,14 @@ const _Header = ({ className, offset, callback }) => {
 const Header = styled(_Header)`
   background-color: #fff;
   padding: 2rem 0;
-  transition: padding .5s ease-in-out;
+  transition: padding 0.5s linear;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   width: 100%;
   z-index: 3;
   &.fix-header {
     position: fixed;
     padding: 1rem 0;
+    transition: padding 0.5s linear;
   }
 `;
 
