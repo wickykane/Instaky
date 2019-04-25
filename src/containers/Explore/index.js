@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Wrapper from '../../components/Wrapper';
 import Slider from '../../components/Slider';
 import { Icon } from '../../components/IconLink';
 import LazyImage from '../../components/Image';
+
 
 import { injectReducer } from '../../utils/injectReducer';
 import reducer from './reducer';
@@ -46,7 +48,7 @@ const BlockTitle = ({ title, children }) => {
   );
 };
 
-const Image = ({ data }) => {
+const Image = () => {
   return (
     <Wrapper className="img-container">
       <LazyImage src="http://nabp.qc.seldatdirect.com/sel2b/assets/img/header/hinh1.jpg" />
@@ -70,13 +72,34 @@ const Explore = () => {
         <Wrapper className="explore-images mt-5">
           <Wrapper className="row">
             <Wrapper className="col-md-4">
-              <Image />
+              <Link
+                to={{
+                  pathname: `/d/1`,
+                  state: { modal: true }
+                }}
+              >
+                <Image />
+              </Link>
             </Wrapper>
             <Wrapper className="col-md-4">
-              <Image />
+              <Link
+                to={{
+                  pathname: `/d/2`,
+                  state: { modal: true }
+                }}
+              >
+                <Image />
+              </Link>
             </Wrapper>
             <Wrapper className="col-md-4">
-              <Image />
+              <Link
+                to={{
+                  pathname: `/d/3`,
+                  state: { modal: true }
+                }}
+              >
+                <Image />
+              </Link>
             </Wrapper>
           </Wrapper>
         </Wrapper>

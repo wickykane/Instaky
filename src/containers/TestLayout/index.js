@@ -10,10 +10,10 @@ import { injectReducer } from '../../utils/injectReducer';
 import { test } from './action';
 
 const TEST = (props, state) => {
-    console.log(props, state);
+    console.log(props);
     return ( 
         <div>
-            This is test 2 
+            This is test { props.match && props.match.params.id}
             <input value={props.test} onChange={() => props.testFN()} />
             <button onClick={() => props.testFN("adasd")}>TEST</button>
         </div>

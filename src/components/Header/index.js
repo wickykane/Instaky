@@ -1,42 +1,53 @@
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import React, { useEffect, useState } from 'react';
+
+// Redux
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import reducer from './reducer';
+import { injectReducer } from '../../utils/injectReducer';
+
+//Action 
+import { setFixHeader } from './action';
+
 import logo from '../../assets/images/logo.svg';
 import SearchInput from '../SearchInput';
 import ImageLink from '../ImageLink';
 import Wrapper from '../Wrapper';
 import { IconLink } from '../IconLink';
 
-const _Header = ({ className, offset, callback }) => {
-  const [isFix, setFix] = useState(false);
 
-  let elementRef, top;
 
+
+const _Header = (props) => {
+
+  const {className, isFix, setFix } = props;
+  const elementRef = useRef(null);
+  let _isFix;
   const handleScroll = () => {
     if (elementRef) {
       const windowTop =
         window.pageYOffset || document.documentElement.scrollTop;
-      const elementOffset = offset || 0;
-      const show = windowTop > elementOffset;
-      setFix(show);
-      callback(show);
+        const show = windowTop > 0;
+        if(_isFix !== show) {
+          setFix(show);
+        }
+        _isFix= show;
     }
   };
 
   useEffect(() => {
     handleScroll();
     window.addEventListener('scroll', handleScroll, false);
+    return () => {
+    window.removeEventListener('scroll', handleScroll, false);
+    }
   }, []);
 
-  const init = e => {
-    if (e) {
-      elementRef = elementRef || e;
-      top = top || e.offsetHeight;
-    }
-  };
 
   return (
     <Wrapper
-      innerRef={init}
+      innerRef={elementRef}
       className={`${className} ${isFix ? 'fix-header' : ''}`}
     >
       <Wrapper className="container">
@@ -72,4 +83,20 @@ const Header = styled(_Header)`
   }
 `;
 
-export default Header;
+const mapStatetoProps = (state) => {
+  return {
+    isFix: state.header.isFix
+  } 
+}
+
+
+export const mapDispatchToProps = (dispatch) => {
+  return {
+    setFix : (value) => dispatch(setFixHeader(value)),
+  };
+}
+
+const withReducer = injectReducer({ key: 'header', reducer });
+
+export default compose(withReducer, connect(mapStatetoProps, mapDispatchToProps))(Header);
+

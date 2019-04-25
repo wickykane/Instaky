@@ -4,13 +4,13 @@ import App from '../containers/MainLayout/loadable';
 import NotFound from '../containers/NotFound/loadable';
 
 const RouteConfig = () => {
-    return (
-        <Switch>
-            <Route path="/" component={App} />
-            <Route path='*' exact component={NotFound} />
-        </Switch>
-    )
-}
+  return (
+    <Switch>
+      <Route path="/" render={() => <App />} />
+      <Route path="*" exact component={NotFound} />
+    </Switch>
+  );
+};
 
 // const PrivateRoute = ({ component: Component, ...rest }) =>{
 //     const token = localStorage.getItem('app_token');

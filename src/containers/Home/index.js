@@ -46,17 +46,6 @@ const ParentWrapper = styled(Wrapper)`
  */
 
 export class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isFix: false
-    };
-  }
-
-  setFix = value => {
-    this.setState({ isFix: value });
-  };
-
   render() {
     return (
       <ParentWrapper>
@@ -69,7 +58,7 @@ export class Home extends Component {
             </Wrapper>
             <Wrapper className="right-column d-sm-none d-md-block">
               <Wrapper
-                className={`content ${this.props.fixMenu ? 'fix-column' : ''}`}
+                className={`content ${this.props.isFix ? 'fix-column' : ''}`}
               >
                 <UserInfo className="large p-3" description="10 hours ago" />
                 <SuggestionCard />
@@ -83,7 +72,9 @@ export class Home extends Component {
 }
 
 const mapStatetoProps = state => {
-  return {};
+  return {
+    isFix: state.header.isFix
+  };
 };
 
 export const mapDispatchToProps = dispatch => {
