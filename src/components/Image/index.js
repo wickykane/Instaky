@@ -7,7 +7,7 @@ const LazyImage = props => {
       const img = new Image();
       img.src = src;
       img.onload = () =>{
-        imgRef && imgRef.current.setAttribute('src', src);
+        imgRef && imgRef.current && imgRef.current.setAttribute('src', src);
       }
   })
   return <img ref={imgRef} alt="" />;
